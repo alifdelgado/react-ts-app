@@ -3,13 +3,16 @@ import TaskItem from "./TaskItem";
 
 interface Props {
   tasks: Task[];
+  deleteTask: (id: string) => void;
 }
 
-const TaskList = ({ tasks }: Props) => {
+const TaskList = ({ tasks, deleteTask }: Props) => {
   return (
     <>
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} />
+        <div className="col-md-4 col-sm-6" key={task.id}>
+          <TaskItem task={task} deleteTask={deleteTask} />
+        </div>
       ))}
     </>
   );
